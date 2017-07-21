@@ -1,22 +1,31 @@
-section#goals
+section#goals-index
   - if current_user
-    h1 Мои цели
-    - @goals.each do |g|
-      p
-        | Цель: 
-        = g.title
-      p 
-        | Накоплено: 
-        = g.start_money
-        | ₽
-      p
-        | Необходимо: 
-        = g.end_money
-        | ₽
-      p 
-        | Осталось дней: 
-        = (g.end_at - g.start_at).to_i
-      hr
+    - if current_user.goals.empty?
+      .empty
+        h1 У вас еще нет целей
+        = link_to 'Добавить!', new_goal_path, class: 'btn btn-success'
+    - else
+      h1 Мои цели
+      - @goals.each do |g|
+        p
+          | Цель: 
+          = g.title
+        p 
+          | Накоплено: 
+          = g.start_money
+          | ₽
+        p
+          | Необходимо: 
+          = g.end_money
+          | ₽
+        p 
+          | Осталось дней: 
+          = (g.end_at - g.start_at).to_i
+        = link_to 'Пополнить', edit_goal_path(g), class: 'btn btn-success'
+        hr
+      h3 Общая статистика
+      = line_chart current_user.goals.group_by_day(:updated_at).sum(:start_money), max: current_user.goals.sum(:end_money)
   - else
     h1 Вы не авторизированы. У вас нет доступа к этой странице!
     = link_to 'Войти', new_session_path, class: 'btn btn-success'
+    

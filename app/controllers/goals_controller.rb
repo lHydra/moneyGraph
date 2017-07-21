@@ -20,6 +20,20 @@ class GoalsController < ApplicationController
     end
   end
 
+  def edit
+    @goal = Goal.find(params[:id])
+  end
+
+  def update
+    @goal = Goal.find(params[:id])
+    new_sum = @goal.start_money + params[:add_money].to_i
+    if @goal.update(start_money: new_sum)
+      redirect_to goals_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def goal_params

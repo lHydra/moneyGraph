@@ -1,11 +1,14 @@
 // Place all the styles related to the Goals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#goals {
-    text-align: center;
+#goals, #goals-index {
     margin: 0 105px;
     label {
       font-size: 1.2em;
       margin: 10px 0;
     }
+}
+
+.empty {
+  text-align: center;
 }

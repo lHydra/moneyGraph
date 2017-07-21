@@ -19,6 +19,8 @@ gem 'slim-rails'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'bcrypt'
 gem 'bootstrap-datepicker-rails'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   gem 'byebug', platform: :mri

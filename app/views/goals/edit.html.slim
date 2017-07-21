@@ -1,0 +1,15 @@
+section#goals
+  - if current_user
+    h1 Пополнить баланс
+    = form_tag goal_path(@goal), method: :put do
+      div
+        label Сколько добавить?
+        br
+        .input-group
+          .input-group-addon ₽
+          = text_field_tag :add_money, nil, class: 'form-control'
+      br
+      = submit_tag 'Добавить', class: 'btn btn-success'
+  - else
+    h1 Вы не авторизированы. У вас нет доступа к этой странице!
+    = link_to 'Войти', new_session_path, class: 'btn btn-success'
