@@ -1,0 +1,22 @@
+section#goals
+  - if current_user
+    h1 Мои цели
+    - @goals.each do |g|
+      p
+        | Цель: 
+        = g.title
+      p 
+        | Накоплено: 
+        = g.start_money
+        | ₽
+      p
+        | Необходимо: 
+        = g.end_money
+        | ₽
+      p 
+        | Осталось дней: 
+        = (g.end_at - g.start_at).to_i
+      hr
+  - else
+    h1 Вы не авторизированы. У вас нет доступа к этой странице!
+    = link_to 'Войти', new_session_path, class: 'btn btn-success'

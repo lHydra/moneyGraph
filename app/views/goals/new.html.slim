@@ -1,0 +1,30 @@
+section#goals
+  - if current_user
+    h1 Добавить цель
+    = form_for @goal do |f|
+      div
+        label Название
+        br
+        = f.text_field :title, class: 'form-control'
+      div
+        label Начальная сумма
+        br
+        .input-group
+          .input-group-addon ₽
+          = f.text_field :start_money, class: 'form-control'
+      div
+        label Конечная сумма
+        br
+        .input-group
+          .input-group-addon ₽
+          = f.text_field :end_money, class: 'form-control'
+      div
+        label В период с
+        = text_field_tag :start_at, nil, class: 'form-control', data: { provide: 'datepicker' }
+        label по
+        = text_field_tag :end_at, nil, class: 'form-control', data: { provide: 'datepicker' }
+      br
+      = f.submit 'Добавить', class: 'btn btn-success'
+  - else
+    h1 Вы не авторизированы. У вас нет доступа к этой странице!
+    = link_to 'Войти', new_session_path, class: 'btn btn-success'

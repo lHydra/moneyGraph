@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'slim-rails'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'bcrypt'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
