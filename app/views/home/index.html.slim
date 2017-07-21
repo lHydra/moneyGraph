@@ -1,0 +1,48 @@
+= render 'header'
+section#portfolio
+  .container
+    .row
+      .col-lg-12.text-center
+        h2
+          | Overview
+        hr.star-primary
+    .row
+      .col-sm-4.portfolio-item
+        .caption
+          .caption-content
+            h4 Ставь цели
+        img.img-responsive[src="/img/celi.jpg" alt="Ставь цели"]
+        
+      .col-sm-4.portfolio-item
+        .caption
+          .caption-content
+            h4 Отслеживай достижения
+        img.img-responsive[src="/img/dost.png" alt="Отслеживай достижения"]
+        
+      .col-sm-4.portfolio-item
+        .caption
+          .caption-content
+            h4 Строй графики
+        img.img-responsive[src="/img/graph.jpg" alt="Строй графики"]
+        
+section#about.success
+  .container
+    .row
+      .col-lg-12.text-center
+        h2
+          | About
+        hr.star-light
+    .row
+      .col-lg-4.col-lg-offset-2
+        p
+          | MoneyGraph - это небольшое веб-приложение, которое позволит любому пользователю
+          |  воспользоваться средствами для отслеживания затрат, ведения статистики и увелечения своего капитала.
+      .col-lg-4
+        p
+          | С нашим приложением вы всегда будете осведомлены о своих поступлениях и их расходовании, тем самым вы сможете взять подконтроль свои финансы.
+          |  Не позволяйте деньгам управлять вами - делайте это сами!
+      .col-lg-8.col-lg-offset-2.text-center
+        a.btn.btn-lg.btn-outline[href="#"]
+          i.fa
+          | Приступить!
+= render 'footer'
