@@ -28,7 +28,11 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="#page-top">MoneyGraph</a>
+                    <% if request.path != root_path %>
+                      <a class="navbar-brand" href="<%= root_path %>">MoneyGraph</a>
+                    <% else %>
+                      <a class="navbar-brand" href="#page-top">MoneyGraph</a>
+                    <% end %>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,9 +47,18 @@
                         <li class="page-scroll">
                             <a href="#about">About</a>
                         </li>
-                        <li class="join">
-                            <a href="#about">Join us</a>
+                        <% if !current_user %>
+                        <li>
+                            <a href="<%= new_session_path %>">Log In</a>
                         </li>
+                          <li class="join">
+                              <a href="<%= new_user_path %>">Join us</a>
+                          </li>
+                        <% else %>
+                          <li>
+                            <%= link_to 'Log Out', logout_path, method: :delete %>
+                          </li>
+                        <% end %>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
