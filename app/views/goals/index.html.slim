@@ -22,6 +22,8 @@ section#goals-index
           | Осталось дней: 
           = (g.end_at - g.start_at).to_i
         = link_to 'Пополнить', edit_goal_path(g), class: 'btn btn-success'
+        = link_to 'Показать', goal_path(g), class: 'btn btn-info'
+        = link_to 'Удалить', goal_path(g), class: 'btn btn-danger', method: :delete
         hr
       h3 Общая статистика
       = line_chart current_user.goals.group_by_day(:updated_at).sum(:start_money), max: current_user.goals.sum(:end_money)

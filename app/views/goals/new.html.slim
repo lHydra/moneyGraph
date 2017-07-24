@@ -1,6 +1,7 @@
 section#goals
   - if current_user
     h1 Добавить цель
+    = render 'errors', object: @goal
     = form_for @goal do |f|
       div
         label Название
