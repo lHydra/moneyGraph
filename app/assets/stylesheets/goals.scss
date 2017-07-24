@@ -1,10 +1,14 @@
-// Place all the styles related to the Users controller here.
+// Place all the styles related to the Goals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#register, #login {
+#goals, #goals-index, #goals-show {
     margin: 0 105px;
     label {
       font-size: 1.2em;
       margin: 10px 0;
     }
+}
+
+.empty {
+  text-align: center;
 }
