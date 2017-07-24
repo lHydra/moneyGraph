@@ -27,7 +27,7 @@ class GoalsController < ApplicationController
   end
 
   def update
-    new_sum = @goal.start_money + params[:add_money].to_i
+    new_sum = @goal.start_money + params[:add_money].to_f
     if @goal.update(start_money: new_sum)
       redirect_to goals_path
     else
@@ -43,7 +43,7 @@ class GoalsController < ApplicationController
   private
 
   def find_goal
-    @goal = Goal.find(params[:id])
+    @goal = current_user.goals.find(params[:id]) if current_user
   end
 
   def goal_params

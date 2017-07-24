@@ -28,6 +28,5 @@ section#goals-index
       h3 Общая статистика
       = line_chart current_user.goals.group_by_day(:updated_at).sum(:start_money), max: current_user.goals.sum(:end_money)
   - else
-    h1 Вы не авторизированы. У вас нет доступа к этой странице!
-    = link_to 'Войти', new_session_path, class: 'btn btn-success'
+    = render 'access-denied'
     

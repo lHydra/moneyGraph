@@ -1,18 +1,21 @@
 section#goals-show
-  h1= @goal.title
-  p
-    | Цель: 
-    = @goal.title
-  p 
-    | Накоплено: 
-    = @goal.start_money
-    | ₽
-  p
-    | Необходимо: 
-    = @goal.end_money
-    | ₽
-  p 
-    | Осталось дней: 
-    = (@goal.end_at - @goal.start_at).to_i
-  = link_to 'Пополнить', edit_goal_path(@goal), class: 'btn btn-success'
-  = link_to 'Удалить', goal_path(@goal), class: 'btn btn-danger', method: :delete
+  - if current_user
+    h1= @goal.title
+    p
+      | Цель: 
+      = @goal.title
+    p 
+      | Накоплено: 
+      = @goal.start_money
+      | ₽
+    p
+      | Необходимо: 
+      = @goal.end_money
+      | ₽
+    p 
+      | Осталось дней: 
+      = (@goal.end_at - @goal.start_at).to_i
+    = link_to 'Пополнить', edit_goal_path(@goal), class: 'btn btn-success'
+    = link_to 'Удалить', goal_path(@goal), class: 'btn btn-danger', method: :delete
+  - else
+    = render 'access-denied'

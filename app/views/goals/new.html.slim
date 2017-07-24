@@ -27,5 +27,4 @@ section#goals
       br
       = f.submit 'Добавить', class: 'btn btn-success'
   - else
-    h1 Вы не авторизированы. У вас нет доступа к этой странице!
-    = link_to 'Войти', new_session_path, class: 'btn btn-success'
+    = render 'access-denied'
