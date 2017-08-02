@@ -1,6 +1,7 @@
 section#goals
   - if current_user
     h1 Пополнить баланс
+    = render 'errors', object: @goal
     = form_tag goal_path(@goal), method: :put do
       div
         label Сколько добавить?

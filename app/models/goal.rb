@@ -4,18 +4,20 @@ class Goal < ApplicationRecord
   validates :title, presence: true, length: { maximum: 30 }
   validates :end_money, presence: true, numericality: { only_float: true }
   validates :start_money, presence: true, numericality: { only_float: true }
+  validates :start_at, presence: true
+  validates :end_at, presence: true
   validate :valid_duration
-  validate :valid_money
+  validate :valid_money, on: :create
 
   def valid_duration
-    if (end_at - start_at).to_i < 0
-      errors.add(:end_at, "can't be less than 'start at' value")
+    if end_at.present? && start_at.present? && (end_at - start_at).to_i < 0
+      errors.add(:end_at, 'значение не может быть меньше начального')
     end
   end
 
   def valid_money
-    if (start_money - end_money) > 0
-      errors.add(:end_money, "can't be less than 'start money' value")
+    if start_money.present? && end_money.present? && (start_money - end_money) > 0
+      errors.add(:end_money, 'значение не может быть меньше начального')
     end
   end
 
